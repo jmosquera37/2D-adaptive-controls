@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://45k3krx3sc3u"]
+
+[ext_resource type="Script" uid="uid://d0keehlphow54" path="res://player.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://cpaj7uhsp7222" path="res://icon.svg" id="2_0hol4"]
+[ext_resource type="AudioStream" uid="uid://diltbeta5tn3c" path="res://simple_jump.mp3" id="3_q6r6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
+size = Vector2(128, 128)
+
+[sub_resource type="Gradient" id="Gradient_epypp"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0hol4"]
+gradient = SubResource("Gradient_epypp")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_epypp"]
+a = Vector2(300, 0)
+b = Vector2(0, 0)
+
+[node name="Node2D" type="Node2D" unique_id=1481427290]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1443203957]
+script = ExtResource("1_epypp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1553539966]
+texture = ExtResource("2_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=689188315]
+shape = SubResource("RectangleShape2D_kdubu")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Player" unique_id=1072750283]
+stream = ExtResource("3_q6r6c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=81600289]
+position = Vector2(-187, 141)
+constant_linear_velocity = Vector2(10, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=442201134]
+scale = Vector2(411, 24)
+texture = SubResource("GradientTexture1D_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1927320410]
+shape = SubResource("SegmentShape2D_epypp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1081544558]
